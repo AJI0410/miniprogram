@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="workout-header">
+    <text class="header-title">运动记录</text>
+    <button class="start-btn" bindtap="startWorkout" wx:if="{{!isWorkingOut}}">开始运动</button>
+    <button class="stop-btn" bindtap="stopWorkout" wx:if="{{isWorkingOut}}">结束运动</button>
+  </view>
+
+  <view class="timer-section" wx:if="{{isWorkingOut}}">
+    <view class="timer-display">
+      <text class="timer-text">{{timerText}}</text>
+    </view>
+    <view class="stats-display">
+      <view class="stat-item">
+        <text class="stat-number">{{currentStats.distance || 0}}</text>
+        <text class="stat-label">距离(km)</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{currentStats.calories || 0}}</text>
+        <text class="stat-label">卡路里</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{currentStats.pace || '0:00'}}</text>
+        <text class="stat-label">配速</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="workout-history">
+    <text class="section-title">运动历史</text>
+    <view class="history-list">
+      <block wx:for="{{workoutHistory}}" wx:key="id">
+        <view class="history-item">
+          <view class="history-info">
+            <text class="history-date">{{item.date}}</text>
+            <text class="history-duration">{{item.duration}}分钟</text>
+          </view>
+          <view class="history-stats">
+            <text class="history-distance">{{item.distance}}km</text>
+            <text class="history-calories">{{item.calories}}卡</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view> 

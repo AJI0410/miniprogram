@@ -1,0 +1,9 @@
+<view class="container">
+  <image class="logo" src="/assets/logo.png"></image>
+  <text class="title">运动健康</text>
+  <text class="subtitle">开启你的健康生活</text>
+  
+  <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+    微信一键登录
+  </button>
+</view> 

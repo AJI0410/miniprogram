@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="filter-section">
+    <picker bindchange="onBpmChange" value="{{bpmIndex}}" range="{{bpmRanges}}">
+      <view class="filter-item">
+        <text>BPM范围: {{bpmRanges[bpmIndex]}}</text>
+        <icon type="arrow" size="16"></icon>
+      </view>
+    </picker>
+  </view>
+
+  <view class="music-list">
+    <block wx:for="{{musicList}}" wx:key="id">
+      <view class="music-item" bindtap="playMusic" data-id="{{item.id}}">
+        <image class="cover" src="{{item.cover_url || '/assets/default-cover.png'}}"></image>
+        <view class="info">
+          <text class="title">{{item.title}}</text>
+          <text class="artist">{{item.artist || '未知歌手'}}</text>
+          <text class="bpm">BPM: {{item.bpm}}</text>
+        </view>
+        <view class="controls">
+          <icon wx:if="{{currentMusicId === item.id && isPlaying}}" type="waiting" size="20" color="#07C160"></icon>
+          <icon wx:elif="{{currentMusicId === item.id}}" type="play" size="20" color="#07C160"></icon>
+          <icon wx:else type="play" size="20" color="#999"></icon>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  <view class="player" wx:if="{{currentMusic}}">
+    <image class="player-cover" src="{{currentMusic.cover_url || '/assets/default-cover.png'}}"></image>
+    <view class="player-info">
+      <text class="player-title">{{currentMusic.title}}</text>
+      <text class="player-artist">{{currentMusic.artist || '未知歌手'}}</text>
+      <text class="player-bpm">BPM: {{currentMusic.bpm}}</text>
+    </view>
+    <view class="player-controls">
+      <button class="control-btn" bindtap="togglePlay">
+        <icon type="{{isPlaying ? 'pause' : 'play'}}" size="20" color="white"></icon>
+      </button>
+      <button class="control-btn" bindtap="stopMusic">
+        <icon type="stop" size="20" color="white"></icon>
+      </button>
+    </view>
+  </view>
+</view> 

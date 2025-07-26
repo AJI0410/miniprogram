@@ -1,0 +1,144 @@
+.container {
+  padding: 20rpx;
+}
+
+.workout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.start-btn {
+  background-color: #07C160;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 15rpx 30rpx;
+  border: none;
+}
+
+.stop-btn {
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 15rpx 30rpx;
+  border: none;
+}
+
+.timer-section {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.timer-display {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.timer-text {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #07C160;
+  font-family: 'Courier New', monospace;
+}
+
+.stats-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.workout-history {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.history-list {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-date {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.history-duration {
+  font-size: 24rpx;
+  color: #07C160;
+}
+
+.history-stats {
+  text-align: right;
+}
+
+.history-distance {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.history-calories {
+  font-size: 24rpx;
+  color: #ff6b6b;
+} 

@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatar || '/assets/default-avatar.png'}}"></image>
+      <view class="user-details">
+        <text class="nickname">{{userInfo.nickname || '用户'}}</text>
+        <text class="welcome">欢迎回来！</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="action-card" bindtap="goToMusic">
+      <image class="action-icon" src="/assets/music-icon.png"></image>
+      <text class="action-title">节奏音乐</text>
+      <text class="action-desc">选择适合的运动音乐</text>
+    </view>
+    
+    <view class="action-card" bindtap="goToWorkout">
+      <image class="action-icon" src="/assets/workout-icon.png"></image>
+      <text class="action-title">开始运动</text>
+      <text class="action-desc">记录你的运动数据</text>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <text class="section-title">今日运动</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">{{todayStats.duration || 0}}</text>
+        <text class="stat-label">运动时长(分钟)</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{todayStats.calories || 0}}</text>
+        <text class="stat-label">消耗卡路里</text>
+      </view>
+    </view>
+  </view>
+</view> 
