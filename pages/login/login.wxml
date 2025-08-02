@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="logo" src="/assets/logo.png"></image>
+  <view class="logo-placeholder">🏃‍♂️</view>
   <text class="title">运动健康</text>
   <text class="subtitle">开启你的健康生活</text>
   

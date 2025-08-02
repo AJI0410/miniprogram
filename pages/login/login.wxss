@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 40rpx;
+}
+
+.logo-placeholder {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 40rpx;
+  border-radius: 20rpx;
+  background-color: #07C160;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 80rpx;
+}
+
+.login-btn {
+  width: 80%;
+  background-color: #07C160;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+
+.login-btn:active {
+  background-color: #06AD56;
+} 

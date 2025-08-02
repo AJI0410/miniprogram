@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/home/home",
+    "pages/login/login",
     "pages/music/music",
     "pages/workout/workout"
   ],
@@ -19,21 +19,15 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "assets/home.png",
-        "selectedIconPath": "assets/home-active.png"
+        "text": "首页"
       },
       {
         "pagePath": "pages/music/music",
-        "text": "音乐",
-        "iconPath": "assets/music.png",
-        "selectedIconPath": "assets/music-active.png"
+        "text": "音乐"
       },
       {
         "pagePath": "pages/workout/workout",
-        "text": "运动",
-        "iconPath": "assets/workout.png",
-        "selectedIconPath": "assets/workout-active.png"
+        "text": "运动"
       }
     ]
   },
