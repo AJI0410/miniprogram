@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/login/login",
+    "pages/terms/terms",
+    "pages/profile/profile",
+    "pages/health/health",
+    "pages/goals/goals",
+    "pages/home/home",
     "pages/music/music",
     "pages/workout/workout"
   ],

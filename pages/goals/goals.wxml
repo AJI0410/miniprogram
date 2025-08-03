@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="header">
+    <text class="title">健康信息监测目标</text>
+  </view>
+  
+  <view class="content">
+    <!-- 运动目标 -->
+    <view class="goal-section">
+      <text class="section-title">运动目标</text>
+      <view class="goal-options">
+        <view 
+          class="goal-option {{selectedGoal === item.value ? 'selected' : ''}}"
+          wx:for="{{goalOptions}}"
+          wx:key="value"
+          bindtap="selectGoal"
+          data-value="{{item.value}}"
+        >
+          <text class="goal-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 每日步数目标 -->
+    <view class="goal-section">
+      <text class="section-title">每日步数目标</text>
+      <view class="step-options">
+        <view 
+          class="step-option {{selectedSteps === item.value ? 'selected' : ''}}"
+          wx:for="{{stepOptions}}"
+          wx:key="value"
+          bindtap="selectSteps"
+          data-value="{{item.value}}"
+        >
+          <text class="step-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 每周运动次数 -->
+    <view class="goal-section">
+      <text class="section-title">每周运动次数</text>
+      <view class="workout-options">
+        <view 
+          class="workout-option {{selectedWorkouts === item.value ? 'selected' : ''}}"
+          wx:for="{{workoutOptions}}"
+          wx:key="value"
+          bindtap="selectWorkouts"
+          data-value="{{item.value}}"
+        >
+          <text class="workout-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 健康监测偏好 -->
+    <view class="goal-section">
+      <text class="section-title">健康监测偏好</text>
+      <view class="preference-list">
+        <view 
+          class="preference-item {{item.selected ? 'selected' : ''}}"
+          wx:for="{{preferences}}"
+          wx:key="id"
+          bindtap="togglePreference"
+          data-id="{{item.id}}"
+        >
+          <text class="preference-text">{{item.label}}</text>
+          <text class="preference-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="complete-btn" bindtap="completeSetup" disabled="{{!canComplete}}">
+      <text class="btn-text">完成设置</text>
+    </button>
+  </view>
+</view> 

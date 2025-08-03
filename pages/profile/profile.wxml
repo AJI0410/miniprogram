@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="header">
+    <text class="title">个人信息填写名称年龄</text>
+  </view>
+  
+  <view class="content">
+    <!-- 头像占位符 -->
+    <view class="avatar-section">
+      <view class="avatar-placeholder" bindtap="chooseAvatar">
+        <text class="avatar-text">{{userInfo.nickname ? userInfo.nickname.charAt(0) : '点击上传'}}</text>
+      </view>
+      <text class="avatar-tip">点击上传头像</text>
+    </view>
+    
+    <!-- 昵称输入 -->
+    <view class="input-section">
+      <text class="label">昵称</text>
+      <input 
+        class="input-field" 
+        placeholder="填写昵称" 
+        value="{{nickname}}"
+        bindinput="onNicknameInput"
+        maxlength="20"
+      />
+      <view class="input-line"></view>
+    </view>
+    
+    <!-- 年龄输入 -->
+    <view class="input-section">
+      <text class="label">年龄</text>
+      <picker 
+        mode="date" 
+        value="{{birthDate}}" 
+        bindchange="onBirthDateChange"
+        class="date-picker"
+      >
+        <view class="picker-display">
+          <text class="picker-text">{{birthDate || '选择出生日期'}}</text>
+          <text class="picker-icon">📅</text>
+        </view>
+      </picker>
+      <view class="input-line"></view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="next-btn" bindtap="nextStep" disabled="{{!canProceed}}">
+      <text class="btn-text">下一步</text>
+      <text class="btn-arrow">→</text>
+    </button>
+  </view>
+</view> 

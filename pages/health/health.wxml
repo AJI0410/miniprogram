@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="header">
+    <text class="title">个人信息填写身高体重</text>
+  </view>
+  
+  <view class="content">
+    <!-- 身高输入 -->
+    <view class="input-section">
+      <text class="label">身高</text>
+      <view class="input-group">
+        <input 
+          class="input-field" 
+          type="number"
+          placeholder="请输入身高" 
+          value="{{height}}"
+          bindinput="onHeightInput"
+        />
+        <text class="unit">cm</text>
+      </view>
+      <view class="input-line"></view>
+    </view>
+    
+    <!-- 体重输入 -->
+    <view class="input-section">
+      <text class="label">体重</text>
+      <view class="input-group">
+        <input 
+          class="input-field" 
+          type="digit"
+          placeholder="请输入体重" 
+          value="{{weight}}"
+          bindinput="onWeightInput"
+        />
+        <text class="unit">kg</text>
+      </view>
+      <view class="input-line"></view>
+    </view>
+    
+    <!-- BMI显示 -->
+    <view class="bmi-section" wx:if="{{bmi > 0}}">
+      <text class="bmi-label">您的BMI指数</text>
+      <text class="bmi-value">{{bmi}}</text>
+      <text class="bmi-category">{{bmiCategory}}</text>
+    </view>
+    
+    <!-- 健康建议 -->
+    <view class="advice-section" wx:if="{{bmi > 0}}">
+      <text class="advice-title">健康建议</text>
+      <text class="advice-content">{{healthAdvice}}</text>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="next-btn" bindtap="nextStep" disabled="{{!canProceed}}">
+      <text class="btn-text">下一步</text>
+      <text class="btn-arrow">→</text>
+    </button>
+  </view>
+</view> 

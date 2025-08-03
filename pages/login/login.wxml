@@ -1,9 +1,43 @@
-<view class="container">
-  <view class="logo-placeholder">🏃‍♂️</view>
-  <text class="title">运动健康</text>
-  <text class="subtitle">开启你的健康生活</text>
-  
-  <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
-    微信一键登录
+<view class="login-container">
+  <view class="logo-section">
+    <view class="logo-placeholder">🏃‍♂️</view>
+    <text class="app-title">运动健康小程序</text>
+    <text class="app-subtitle">让运动更科学，让健康更简单</text>
+  </view>
+
+  <view class="login-form">
+    <view class="input-group">
+      <text class="input-label">账号</text>
+      <input 
+        class="input-field" 
+        type="text" 
+        placeholder="请输入账号" 
+        value="{{username}}"
+        bindinput="onUsernameInput"
+      />
+    </view>
+
+    <view class="input-group">
+      <text class="input-label">密码</text>
+      <input 
+        class="input-field" 
+        type="password" 
+        placeholder="请输入密码" 
+        value="{{password}}"
+        bindinput="onPasswordInput"
+      />
+    </view>
+
+    <button 
+      class="login-btn {{loading ? 'loading' : ''}}" 
+      bindtap="onLogin"
+      disabled="{{loading}}"
+    >
+      {{loading ? '登录中...' : '登录'}}
   </button>
+
+    <view class="register-link">
+      <text bindtap="onRegister">还没有账号？立即注册</text>
+    </view>
+  </view>
 </view> 

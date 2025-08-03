@@ -10,6 +10,7 @@ Page({
   onLoad() {
     this.loadUserInfo()
     this.loadTodayStats()
+    this.loadUserProfile()
   },
 
   onShow() {
@@ -21,6 +22,20 @@ Page({
     const userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
       this.setData({ userInfo })
+    }
+  },
+
+  loadUserProfile() {
+    const profile = wx.getStorageSync('userProfile')
+    const health = wx.getStorageSync('userHealth')
+    const goals = wx.getStorageSync('userGoals')
+    
+    if (profile || health || goals) {
+      this.setData({
+        userProfile: profile,
+        userHealth: health,
+        userGoals: goals
+      })
     }
   },
 

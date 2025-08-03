@@ -1,32 +1,44 @@
 const db = require('../db')
 
-module.exports = {
-  // 根据openid查找用户
-  async findByOpenid(openid) {
-    const users = await db.query('SELECT * FROM users WHERE openid = ?', [openid])
-    return users[0]
-  },
-  
-  // 创建用户
-  async create(user) {
-    const result = await db.query(
-      'INSERT INTO users SET ?', 
-      {
-        openid: user.openid,
-        nickname: user.nickName,
-        avatar: user.avatarUrl,
-        gender: user.gender,
-        city: user.city,
-        province: user.province,
-        country: user.country
-      }
-    )
-    return result.insertId
-  },
-
-  // 根据ID查找用户
+class UserModel {
   async findById(id) {
-    const users = await db.query('SELECT * FROM users WHERE id = ?', [id])
+    const sql = 'SELECT * FROM users WHERE id = ?'
+    const users = await db.query(sql, [id])
     return users[0]
   }
-} 
+
+  async findByOpenid(openid) {
+    const sql = 'SELECT * FROM users WHERE openid = ?'
+    const users = await db.query(sql, [openid])
+    return users[0]
+  }
+
+  async findByUsername(username) {
+    const sql = 'SELECT * FROM users WHERE username = ?'
+    const users = await db.query(sql, [username])
+    return users[0]
+  }
+
+  async create(userData) {
+    const sql = 'INSERT INTO users (username, password, nickname, avatar_url) VALUES (?, ?, ?, ?)'
+    const result = await db.query(sql, [
+      userData.username, 
+      userData.password, 
+      userData.nickname, 
+      userData.avatar_url
+    ])
+    
+    // 返回创建的用户
+    return await this.findById(result.insertId)
+  }
+
+  async update(id, userData) {
+    const sql = 'UPDATE users SET nickname = ?, avatar_url = ? WHERE id = ?'
+    await db.query(sql, [userData.nickname, userData.avatar_url, id])
+    
+    // 返回更新后的用户
+    return await this.findById(id)
+  }
+}
+
+module.exports = new UserModel() 
