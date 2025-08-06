@@ -3,7 +3,7 @@ Page({
     username: '',
     password: '',
     loading: false,
-    serverUrl: 'http://192.168.77.87:3000'
+    serverUrl: 'http://192.168.1.15:3000'
   },
 
   onLoad() {
