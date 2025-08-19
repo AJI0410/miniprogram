@@ -52,7 +52,7 @@ Page({
       wx.showLoading({ title: '加载中...' })
       
       const res = await wx.request({
-        url: 'http://localhost:3000/api/music',
+        url: 'http://192.168.0.108:3000/api/music',
         method: 'GET'
       })
       
@@ -93,7 +93,7 @@ Page({
     const range = bpmRanges[index - 1]
     
     wx.request({
-      url: `http://localhost:3000/api/music?minBpm=${range.min}&maxBpm=${range.max}`,
+              url: `http://192.168.0.108:3000/api/music?minBpm=${range.min}&maxBpm=${range.max}`,
       method: 'GET',
       success: (res) => {
         if (res.data) {

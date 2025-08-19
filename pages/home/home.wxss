@@ -125,4 +125,14 @@
 .stat-label {
   font-size: 24rpx;
   color: #999;
+}
+
+.hardware-connect-panel {
+  display: flex;
+  justify-content: space-around;
+  margin: 20rpx 0 30rpx 0;
+}
+.hardware-connect-panel button {
+  flex: 1;
+  margin: 0 10rpx;
 } 

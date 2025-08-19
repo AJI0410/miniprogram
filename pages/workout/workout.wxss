@@ -1,52 +1,114 @@
 .container {
   padding: 20rpx;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  position: relative;
 }
 
-.workout-header {
+/* 倒计时页面 */
+.countdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #07C160, #00d4aa);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: white;
-  border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
 }
 
-.header-title {
-  font-size: 36rpx;
+.countdown-container {
+  text-align: center;
+  color: white;
+}
+
+.countdown-number {
+  font-size: 200rpx;
   font-weight: bold;
-  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+  animation: countdownPulse 1s ease;
 }
 
-.start-btn {
-  background-color: #07C160;
-  color: white;
-  border-radius: 50rpx;
-  font-size: 28rpx;
-  padding: 15rpx 30rpx;
-  border: none;
+.countdown-text {
+  font-size: 36rpx;
+  opacity: 0.9;
+  display: block;
 }
 
-.stop-btn {
-  background-color: #ff4757;
-  color: white;
-  border-radius: 50rpx;
-  font-size: 28rpx;
-  padding: 15rpx 30rpx;
-  border: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.timer-section {
+@keyframes countdownPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 开始运动区域 */
+.start-section {
   background-color: white;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   padding: 40rpx;
   margin-bottom: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.monitor-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.center-start {
+  display: flex;
+  justify-content: center;
+}
+
+/* 运动状态区域 */
+.workout-status-section {
+  background-color: white;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 计时器区域 */
+.timer-section {
+  text-align: center;
+  margin-bottom: 40rpx;
+  transition: all 0.3s ease;
+}
+
+.timer-section.active {
+  background: linear-gradient(135deg, #07C160, #00d4aa);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: -30rpx -30rpx 30rpx -30rpx;
 }
 
 .timer-display {
-  text-align: center;
   margin-bottom: 30rpx;
 }
 
@@ -55,15 +117,34 @@
   font-weight: bold;
   color: #07C160;
   font-family: 'Courier New', monospace;
+  display: block;
+  margin-bottom: 10rpx;
 }
 
+.timer-section.active .timer-text {
+  color: white;
+}
+
+.timer-label {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+}
+
+.timer-section.active .timer-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 统计数据 */
 .stats-display {
   display: flex;
   justify-content: space-around;
+  padding: 20rpx 0;
 }
 
 .stat-item {
   text-align: center;
+  flex: 1;
 }
 
 .stat-number {
@@ -74,16 +155,92 @@
   margin-bottom: 8rpx;
 }
 
+.timer-section.active .stat-number {
+  color: white;
+}
+
 .stat-label {
   font-size: 24rpx;
   color: #999;
 }
 
+.timer-section.active .stat-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 控制按钮区域 */
+.control-section {
+  margin-top: 20rpx;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+}
+
+.control-btn {
+  border: none;
+  border-radius: 50rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  min-width: 160rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #07C160, #00d4aa);
+  color: white;
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.pause-btn {
+  background: linear-gradient(135deg, #ff9500, #ff6b35);
+  color: white;
+}
+
+.pause-btn:active {
+  transform: scale(0.95);
+}
+
+.resume-btn {
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  color: white;
+}
+
+.resume-btn:active {
+  transform: scale(0.95);
+}
+
+.stop-btn {
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  color: white;
+}
+
+.stop-btn:active {
+  transform: scale(0.95);
+}
+
+.btn-text {
+  font-weight: 600;
+}
+
+/* 运动历史 */
 .workout-history {
   background-color: white;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   padding: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
 }
 
 .section-title {

@@ -45,7 +45,7 @@ Page({
       if (!token) return
 
       const res = await wx.request({
-        url: 'http://localhost:3000/api/stats/today',
+        url: 'http://192.168.0.108:3000/api/stats/today',
         method: 'GET',
         header: {
           'Authorization': `Bearer ${token}`
@@ -70,5 +70,32 @@ Page({
     wx.switchTab({
       url: '/pages/workout/workout'
     })
+  },
+
+  onScanDevice() {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        const deviceId = res.result;
+        wx.setStorageSync('deviceId', deviceId);
+        wx.showToast({ title: '绑定成功：' + deviceId, icon: 'success' });
+      },
+      fail: () => wx.showToast({ title: '扫码失败', icon: 'none' })
+    });
+  },
+
+  onInputDevice() {
+    wx.showModal({
+      title: '输入设备号',
+      editable: true,
+      placeholderText: '请输入设备号',
+      success: (res) => {
+        if (res.confirm && res.content) {
+          const deviceId = res.content;
+          wx.setStorageSync('deviceId', deviceId);
+          wx.showToast({ title: '绑定成功：' + deviceId, icon: 'success' });
+        }
+      }
+    });
   }
 }) 

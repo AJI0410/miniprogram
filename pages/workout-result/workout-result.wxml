@@ -1,0 +1,45 @@
+<view class="container">
+  <!-- 轨迹地图 -->
+  <view class="map-card">
+    <map
+      id="result-map"
+      longitude="{{mapCenter.longitude}}"
+      latitude="{{mapCenter.latitude}}"
+      scale="16"
+      polyline="{{polyline}}"
+      markers="{{markers}}"
+      include-points="{{includePoints}}"
+      include-padding="{{includePadding}}"
+      style="width: 100%; height: {{mapHeight}}px; border-radius: 20rpx; overflow: hidden;"
+    />
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="summary-card">
+    <view class="distance-row">
+      <text class="distance-text">{{distanceText}}</text>
+      <text class="unit-text">公里</text>
+    </view>
+    <text class="meta-text">{{dateText}}</text>
+
+    <view class="metrics-row">
+      <view class="metric">
+        <text class="metric-value">{{workoutData.pace || '0:00'}}</text>
+        <text class="metric-label">平均配速</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{durationText}}</text>
+        <text class="metric-label">用时</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{workoutData.calories || 0}}</text>
+        <text class="metric-label">卡路里</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="action share" bindtap="shareWorkout">分享成果</button>
+    <button class="action home" bindtap="goHome">返回运动</button>
+  </view>
+</view> 

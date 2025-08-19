@@ -1,31 +1,89 @@
 <view class="container">
-  <view class="workout-header">
-    <text class="header-title">运动记录</text>
-    <button class="start-btn" bindtap="startWorkout" wx:if="{{!isWorkingOut}}">开始运动</button>
-    <button class="stop-btn" bindtap="stopWorkout" wx:if="{{isWorkingOut}}">结束运动</button>
-  </view>
-
-  <view class="timer-section" wx:if="{{isWorkingOut}}">
-    <view class="timer-display">
-      <text class="timer-text">{{timerText}}</text>
-    </view>
-    <view class="stats-display">
-      <view class="stat-item">
-        <text class="stat-number">{{currentStats.distance || 0}}</text>
-        <text class="stat-label">距离(km)</text>
-      </view>
-      <view class="stat-item">
-        <text class="stat-number">{{currentStats.calories || 0}}</text>
-        <text class="stat-label">卡路里</text>
-      </view>
-      <view class="stat-item">
-        <text class="stat-number">{{currentStats.pace || '0:00'}}</text>
-        <text class="stat-label">配速</text>
-      </view>
+  <!-- 倒计时页面 -->
+  <view class="countdown-overlay" wx:if="{{showCountdown}}">
+    <view class="countdown-container">
+      <text class="countdown-number">{{countdownNumber}}</text>
+      <text class="countdown-text">准备开始</text>
     </view>
   </view>
 
-  <view class="workout-history">
+  <!-- 地图区域 -->
+  <map
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    polyline="{{polyline}}"
+    markers="{{markers}}"
+    circles="{{circles}}"
+    style="width: 100%; height: {{workoutStatus === 'working' || workoutStatus === 'paused' ? '75vh' : '400rpx'}}; margin-bottom: 30rpx;"
+  />
+
+  <!-- 离场遮罩，避免闪回 -->
+  <view wx:if="{{leavingMask}}" style="position:fixed;inset:0;background:#fff;z-index:9999"></view>
+
+  <!-- 运动状态区域 -->
+  <view class="workout-status-section" wx:if="{{workoutStatus === 'working' || workoutStatus === 'paused'}}">
+    <!-- 计时器显示区域 -->
+    <view class="timer-section {{workoutStatus !== 'idle' ? 'active' : ''}}">
+      <view class="timer-display">
+        <text class="timer-text">{{timerText}}</text>
+        <text class="timer-label">{{workoutStatus === 'paused' ? '已暂停' : workoutStatus === 'working' ? '运动中' : '准备开始'}}</text>
+      </view>
+      
+      <!-- 运动数据统计 -->
+      <view class="stats-display" wx:if="{{workoutStatus !== 'idle'}}">
+        <view class="stat-item">
+          <text class="stat-number">{{currentStats.distance || 0}}</text>
+          <text class="stat-label">距离(km)</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{currentStats.calories || 0}}</text>
+          <text class="stat-label">卡路里</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{currentStats.pace || '0:00'}}</text>
+          <text class="stat-label">配速</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 控制按钮区域 -->
+    <view class="control-section">
+      <!-- 运动中状态 -->
+      <view class="control-buttons" wx:if="{{workoutStatus === 'working'}}">
+        <button class="control-btn pause-btn" bindtap="pauseWorkout">
+          <text class="btn-text">暂停</text>
+        </button>
+        <button class="control-btn stop-btn" bindtap="stopWorkout">
+          <text class="btn-text">结束</text>
+        </button>
+      </view>
+
+      <!-- 暂停状态 -->
+      <view class="control-buttons" wx:if="{{workoutStatus === 'paused'}}">
+        <button class="control-btn resume-btn" bindtap="resumeWorkout">
+          <text class="btn-text">继续</text>
+        </button>
+        <button class="control-btn stop-btn" bindtap="stopWorkout">
+          <text class="btn-text">结束</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始运动按钮区域 -->
+  <view class="start-section" wx:if="{{workoutStatus === 'idle'}}">
+    <view class="monitor-title">实时监测</view>
+    <view class="center-start">
+      <button class="control-btn start-btn" bindtap="startWorkout">
+        <text class="btn-text">开始运动</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 运动历史 -->
+  <view class="workout-history" wx:if="{{workoutStatus === 'idle'}}">
     <text class="section-title">运动历史</text>
     <view class="history-list">
       <block wx:for="{{workoutHistory}}" wx:key="id">

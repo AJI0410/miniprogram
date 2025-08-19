@@ -23,6 +23,11 @@
     </view>
   </view>
 
+  <view class="hardware-connect-panel">
+    <button bindtap="onScanDevice">扫一扫绑定设备</button>
+    <button bindtap="onInputDevice">输入设备号绑定</button>
+  </view>
+
   <view class="stats-section">
     <text class="section-title">今日运动</text>
     <view class="stats-grid">

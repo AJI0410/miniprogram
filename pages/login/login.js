@@ -1,10 +1,10 @@
 Page({
   data: {
     username: '',
-    password: '',
-    loading: false,
-    serverUrl: 'http://192.168.1.15:3000'
-  },
+          password: '',
+      loading: false,
+      serverUrl: 'http://192.168.0.108:3000'
+    },
 
   onLoad() {
     // 检查是否已经登录

@@ -7,7 +7,8 @@
     "pages/goals/goals",
     "pages/home/home",
     "pages/music/music",
-    "pages/workout/workout"
+    "pages/workout/workout",
+    "pages/workout-result/workout-result"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,5 +37,10 @@
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于记录您的运动轨迹"
+    }
+  }
 } 

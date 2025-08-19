@@ -1,0 +1,97 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f6f7;
+  min-height: 100vh;
+}
+
+.map-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  padding: 28rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.08);
+}
+
+.distance-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+}
+
+.distance-text {
+  font-size: 72rpx;
+  font-weight: 800;
+  color: #111;
+}
+
+.unit-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.meta-text {
+  display: block;
+  margin-top: 8rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.metrics-row {
+  margin-top: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.metric {
+  flex: 1;
+  text-align: center;
+}
+
+.metric-value {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #111;
+}
+
+.metric-label {
+  color: #888;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+
+.action {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 44rpx;
+  border: none;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action.share {
+  background: linear-gradient(135deg, #ff9500, #ff6b35);
+  color: #fff;
+}
+
+.action.home {
+  background: #fff;
+  color: #07C160;
+  border: 2rpx solid #07C160;
+} 
