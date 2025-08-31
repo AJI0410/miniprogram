@@ -117,21 +117,45 @@
 
 .player-controls {
   display: flex;
-  gap: 10rpx;
+  gap: 15rpx;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .control-btn {
-  width: 60rpx;
-  height: 60rpx;
-  background-color: #07C160;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  padding: 0;
+  min-width: 70rpx !important;
+  min-height: 70rpx !important;
+  width: 70rpx !important;
+  height: 70rpx !important;
+  background-color: #07C160 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0 2rpx 8rpx rgba(7, 193, 96, 0.3);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  line-height: 1 !important;
 }
 
-.control-btn:active {
-  background-color: #06AD56;
+.control-btn:active,
+.button-hover {
+  background-color: #06AD56 !important;
+  transform: scale(0.95);
+  box-shadow: 0 1rpx 4rpx rgba(7, 193, 96, 0.4);
+}
+
+.btn-icon {
+  width: 32rpx !important;
+  height: 32rpx !important;
+  flex-shrink: 0;
+}
+
+/* 确保按钮内容居中 */
+.control-btn::after {
+  border: none !important;
 } 

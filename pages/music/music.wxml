@@ -34,11 +34,12 @@
       <text class="player-bpm">BPM: {{currentMusic.bpm}}</text>
     </view>
     <view class="player-controls">
-      <button class="control-btn" bindtap="togglePlay">
-        <icon type="{{isPlaying ? 'pause' : 'play'}}" size="20" color="white"></icon>
+      <button class="control-btn" bindtap="togglePlay" hover-class="button-hover">
+        <image wx:if="{{isPlaying}}" class="btn-icon" src="../../assets/tabbar/pause--v1.png" mode="aspectFit"></image>
+        <image wx:else class="btn-icon" src="../../assets/tabbar/play--v1.png" mode="aspectFit"></image>
       </button>
-      <button class="control-btn" bindtap="stopMusic">
-        <icon type="stop" size="20" color="white"></icon>
+      <button class="control-btn" bindtap="stopMusic" hover-class="button-hover">
+        <image class="btn-icon" src="../../assets/tabbar/stop--v1.png" mode="aspectFit"></image>
       </button>
     </view>
   </view>

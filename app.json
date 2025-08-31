@@ -24,15 +24,21 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "/assets/tabbar/home.png", 
+        "selectedIconPath": "/assets/tabbar/home-active.png" 
       },
       {
         "pagePath": "pages/music/music",
-        "text": "音乐"
+        "text": "音乐",
+        "iconPath": "/assets/tabbar/music.png", 
+        "selectedIconPath": "/assets/tabbar/music-active.png" 
       },
       {
         "pagePath": "pages/workout/workout",
-        "text": "运动"
+        "text": "运动",
+        "iconPath": "/assets/tabbar/workout.png", 
+        "selectedIconPath": "/assets/tabbar/workout-active.png" 
       }
     ]
   },
